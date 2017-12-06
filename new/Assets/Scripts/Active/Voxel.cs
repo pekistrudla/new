@@ -13,9 +13,10 @@ namespace workshop02
         */
 
 
-
         public Mesh[] MeshTable;
         private MeshFilter _filter;
+        int currentFrame = 0;
+        float frame = 0;
 
         private void Awake()
         {
@@ -59,8 +60,13 @@ namespace workshop02
             //reference to time end
             // _propertyblock = new MaterialPropertyBlock();
             _renderer = gameObject.GetComponent<MeshRenderer>();
-            _renderer.enabled = false;
+            _renderer.enabled = _state;
             address = new Vector3(i, j, k);
+
+            Debug.Assert(_filter != null);
+            Debug.Assert(MeshTable != null);
+            Debug.Assert(MeshTable.Length == 4);
+
             _filter.mesh = MeshTable[type];
 
         }
@@ -202,6 +208,7 @@ namespace workshop02
             return _voxelBack;
         }
 
+        // >>> Do I need this?
         public void VoxelDisplay()
         {
             if (_state == true)
