@@ -44,7 +44,6 @@ namespace workshop02
         GOLRule rule5 = new GOLRule();
         GOLRule deathrule = new GOLRule();
 
-        bool pause = false;
 
 
         // Use this for initialization
