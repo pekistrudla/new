@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 930c2963a2967df43a982ed6466007d6
+timeCreated: 1512560447
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - seedImage: {instanceID: 0}
+  - voxelPrefab: {fileID: 1786184328421306, guid: 34dcb21f57b5d83458b8df6bee8d99fe,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

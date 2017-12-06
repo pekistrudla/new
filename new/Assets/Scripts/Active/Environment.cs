@@ -7,6 +7,7 @@ namespace workshop02
 
     public class Environment : MonoBehaviour
     {
+        bool pause = false;
 
         //placing the variables
 
@@ -15,12 +16,15 @@ namespace workshop02
         public int timeEnd = 50;
         int currentFrame = 0;
 
+        //GameObject voxel;
+
         int width;
         int height;
-        int lenght;
+        int length;
 
         public GameObject voxelPrefab;
         GameObject[,,] voxelGrid;
+        
         //spacing between voxels
         float spacing = 1.0f;
 
@@ -28,6 +32,11 @@ namespace workshop02
         int totalAliveCells = 0;
         float layerdensity = 0;
         float[] layerDensities;
+
+        List<List<GameObject>> voxelsByDensity = new List<List<GameObject>>();
+        bool haveSeparatedByDensity = false;
+        int currentDensityToDisplay = 0;
+
 
         //Max 
         int maxAge;
@@ -50,8 +59,13 @@ namespace workshop02
         void Start()
         {
             width = seedImage.width;
-            lenght = seedImage.height;
+            length = seedImage.height;
             height = timeEnd;
+
+
+            //CreateTheStartingNeighborhood();
+
+            CreateGrid();
 
             rule1.setupRule(2, 3, 3, 3);
             rule2.setupRule(2, 6, 4, 5);
@@ -82,7 +96,6 @@ namespace workshop02
             //if (currentFrame > width/3 && currentFrame < width/2) currentRule = rule2;
 
             if (currentFrame > width / 2 && currentFrame < 0.8 * width) currentRule = rule1;
-
             if (currentFrame > 0.8 * width) currentRule = rule3;
 
             //if (currentVoxelObj.GetComponent<Voxel>().GetAge() == 10) currentRule = rule2;
@@ -126,8 +139,32 @@ namespace workshop02
             currentFrame++;
         }
 
+        void CreateGrid()
+        {
+            // Allocate space in memory for the array
+            voxelGrid = new GameObject[width, length, height];
+            
+            // Populate the array with voxels from a base image
+            for (int k = 1; k < height; k++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    for (int i = 0; i < width; i++)
+                    {
+                        //create the game object of the voxel
+                        GameObject currentVoxelObj = Instantiate(voxelPrefab, transform);
+                        var voxel = currentVoxelObj.GetComponent<Voxel>();
+                    }
+                }
+            }
+
+            //voxel.SetupVoxel(i, j, k, 1);
+        }
 
 
+    
+       
+  
 
 
     }

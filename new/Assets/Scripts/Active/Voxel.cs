@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace workshop02
-{
 
     public class Voxel : MonoBehaviour
     {
@@ -45,6 +43,7 @@ namespace workshop02
         private Voxel[] _neighbors3dMO = new Voxel[26];
 
         private Voxel[] _neighbors3dVN = new Voxel[6];
+
 
         private Voxel _voxelAbove;
         private Voxel _voxelBelow;
@@ -92,6 +91,13 @@ namespace workshop02
             _state = state;
         }
 
+        // Set the future state of the voxel
+        public void SetFutureState(bool futureState)
+        {
+        _futureState = futureState;
+        }
+
+
         public void SetAge(int age)
         {
             _age = age;
@@ -102,7 +108,12 @@ namespace workshop02
             return _state;
         }
 
-        public int GetAge()
+        public bool GetFutureState()
+        {
+        return _futureState;
+        }
+
+    public int GetAge()
         {
             return _age;
         }
@@ -208,13 +219,13 @@ namespace workshop02
             return _voxelBack;
         }
 
-        // >>> Do I need this?
+        // Showing
         public void VoxelDisplay()
         {
             if (_state == true)
             {
                 // Set Color
-                Color col = new Color(1, 0, 0, 1);
+                Color col = new Color(1, 0, 1, 1);
                 _propblock.SetColor("_Color", col);
                 // Updated the mesh renderer color
                 _renderer.enabled = true;
@@ -282,6 +293,6 @@ namespace workshop02
 
 
 
-}
+
 
 

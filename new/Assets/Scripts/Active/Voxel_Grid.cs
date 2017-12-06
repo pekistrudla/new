@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace workshop02
 {
-
+    /*
     public class Voxel_Grid : MonoBehaviour
     {
 
@@ -145,5 +145,5 @@ namespace workshop02
             }
 
         }
-    }
+    }*/
 }
